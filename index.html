@@ -232,6 +232,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zkxie.github.io/2019/01/24/扩展Euclidean算法求乘法逆的代码实现-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan Xie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/jimmy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/24/扩展Euclidean算法求乘法逆的代码实现-1/" itemprop="url">扩展Euclidean算法求乘法逆的代码实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T15:53:34+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>假设a和b是两个不为0的整数，以下代码用C/C++实现了求b模a的乘法逆的算法（返回-1时表示没有乘法逆）。</p>
+<pre><code>// find the inverse modulo a of b
+int findInverse(int a, int b) {
+    if (0 == a || 0 == b) {
+        return -1;
+    }
+
+    if (a &lt; 0) {
+        a = -a;
+    }
+    if (b &lt; 0) {
+        b = -b;
+    }
+
+    int t0 = 0, t = 1, a0 = a, q = a / b, r = a - q * b;
+    while (r &gt; 0) {
+        int temp = (t0 - q * t) % a0;
+        if (temp &lt; 0) {
+            temp = temp + a0;
+        }
+        t0 = t;
+        t = temp;
+        a = b;
+        b = r;
+        q = a / b;
+        r = a - q * b;
+    }
+    if (1 != b) {
+        return -1;
+    } else {
+        return t;
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zkxie.github.io/2019/01/20/Euclidean算法求最大公因子的代码实现-1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -801,7 +953,7 @@ $ npm config set registry https://registry.npm.taobao.org
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
